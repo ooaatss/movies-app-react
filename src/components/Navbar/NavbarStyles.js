@@ -53,7 +53,7 @@ export const Menu = styled.ul`
   display: flex;
   align-items: center;
   text-align: center;
-  @media only screen and (max-width: 1000px) {
+  @media (max-width: 1000px) {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -69,7 +69,7 @@ export const Menu = styled.ul`
 export const MenuItem = styled.li`
   list-style: none;
   height: 80px;
-  @media only screen and (max-width: 1000px) {
+  @media (max-width: 1000px) {
     width: 100%;
     &:hover {
       border: none;
@@ -94,7 +94,7 @@ export const MenuLink = styled(Link)`
     background-color: #0077b6;
     color: #fff;
   }
-  @media only screen and (max-width: 1000px) {
+  @media  (max-width: 1000px) {
     display: block;
     padding: 3rem;
     text-align: center;
