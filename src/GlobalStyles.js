@@ -85,7 +85,7 @@ export const OutlineButton = styled.button`
   &:hover {
     background-color: #0077b6;
     color: #fff;
-    border: none;
+    border-color: #fff;
     ${(props) =>
       props.onHover ? `transform: translateY(-0.5rem) scale(1.02)` : ''};
   }
