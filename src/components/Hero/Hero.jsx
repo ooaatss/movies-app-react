@@ -1,4 +1,3 @@
-import { Button } from '../../GlobalStyles';
 import {
   HeroContainer,
   HeroContent,
@@ -6,7 +5,6 @@ import {
   HeroTitle,
   HeroTitleText,
   HeroText,
-  HeroBtn,
 } from './HeroStyles';
 const Hero = () => {
   return (

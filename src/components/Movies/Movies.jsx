@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useQuery } from 'react-query';
 import { getMovies } from '../../services/ServicesAPI';
 import { Helmet } from 'react-helmet';
@@ -11,7 +10,6 @@ import { Button } from '../../GlobalStyles';
 import MoviesList from './List/MoviesList';
 import Loading from '../../components/Loading/Loading';
 const Movies = () => {
-  const [search, setSearch] = useState('');
   const { data, isError, isLoading, error } = useQuery('movies', getMovies);
   if (isLoading) {
     return <Loading />;
