@@ -59,7 +59,7 @@ export const Button = styled.button`
   color: #fff;
   padding: 10px 20px;
   font-size: 18px;
-  outline: none;
+  outline: none; 
   cursor: pointer;
   border: none;
   transition: all 0.5s ease;
@@ -78,6 +78,7 @@ export const OutlineButton = styled.button`
   color: #0077b6;
   outline: none;
   padding: 10px 20px;
+  cursor: pointer;
   font-size: 18px;
   transition: all 0.5s ease;
   background-color: #fff;
@@ -90,3 +91,5 @@ export const OutlineButton = styled.button`
       props.onHover ? `transform: translateY(-0.5rem) scale(1.02)` : ''};
   }
 `;
+
+

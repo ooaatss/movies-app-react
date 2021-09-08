@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Container, OutlineButton } from '../../GlobalStyles';
+import { Link} from 'react-router-dom';
 export const MovieContainer = styled(Container)`
   padding: 32px 16px;
   ${Container}
@@ -56,6 +57,7 @@ export const Review = styled.p`
   align-items: center;
   width: 50px;
   height: 50px;
+  font-size: 20px;
   background-color: #0077b6;
   color: #fff;
   border-radius: 16px 0;
@@ -77,4 +79,10 @@ export const MovieRelease = styled.p`
 `;
 export const ViewMovieButton = styled(OutlineButton)`
   margin-top: 8px;
+`;
+
+export const MovieLink = styled(Link)`
+  text-decoration: none;
+  outline: none;
+  border: none;
 `;

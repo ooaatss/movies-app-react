@@ -20,11 +20,6 @@ const Hero = () => {
             <HeroText>
               Search info about your favorite movies and TV shows.
             </HeroText>
-            <HeroBtn to='#movies'>
-              <Button onHover  >
-                Show Movies
-              </Button>
-            </HeroBtn>
           </HeroContentText>
         </HeroContent>
       </HeroContainer>

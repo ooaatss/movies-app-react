@@ -1,57 +1,38 @@
+import { useState } from 'react';
 import { useQuery } from 'react-query';
 import { getMovies } from '../../services/ServicesAPI';
+import { Helmet } from 'react-helmet';
 import {
   MovieContainer,
-  MovieGrid,
-  Movie,
-  MovieImage,
-  Review,
   SearchContainer,
   InputSearch,
-  InfoMovie,
-  MovieTitle,
-  MovieRelease,
-  ViewMovieButton,
 } from './MoviesStyles';
 import { Button } from '../../GlobalStyles';
+import MoviesList from './List/MoviesList';
+import Loading from '../../components/Loading/Loading';
 const Movies = () => {
-  const dateFormatted = (date) => {
-    return new Date(date).toLocaleString('en-us', {
-      month: 'long',
-      day: 'numeric',
-      year: 'numeric',
-    });
-  };
+  const [search, setSearch] = useState('');
   const { data, isError, isLoading, error } = useQuery('movies', getMovies);
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
   if (isError) {
     return <div>Error! {error}</div>;
   }
   return (
+    <>
+      <Helmet>
+        <title>Rexty Movies Searcher | Home</title>
+        <meta name="description" content="Search info of your favorite movies and TV series" />
+      </Helmet>
     <MovieContainer id='movies'>
       <SearchContainer>
         <InputSearch placeholder='Search movie...' />
         <Button>Search</Button>
       </SearchContainer>
-      <MovieGrid>
-        {data.map(({ poster_path, vote_average, title, release_date, }) => (
-          <Movie>
-            <MovieImage
-              src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-              alt=''
-            />
-            <Review>{vote_average}</Review>
-            <InfoMovie>
-              <MovieTitle>{title}</MovieTitle>
-              <MovieRelease>{`Released: ${dateFormatted(release_date)}`}</MovieRelease>
-              <ViewMovieButton>View Movie</ViewMovieButton>
-            </InfoMovie>
-          </Movie>
-        ))}
-      </MovieGrid>
+       <MoviesList movies={data} />
     </MovieContainer>
+    </>
   );
 };
 
