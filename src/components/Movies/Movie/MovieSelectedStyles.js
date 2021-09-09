@@ -36,7 +36,7 @@ export const MovieImgContainer = styled.div`
 `;
 
 export const MovieImg = styled.img`
-  max-height: 500px;
+  max-height: 400px;
   width: 100%;
   border-radius: 20px;
   @media (min-width: 800px) {

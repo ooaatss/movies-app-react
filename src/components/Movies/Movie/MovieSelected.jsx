@@ -1,10 +1,9 @@
 import { Helmet } from 'react-helmet';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { getMovieById } from '../../../services/ServicesAPI';
 import {
   SingleMovieContainer,
-  ButtonBackLink,
   ButtonBack,
   MovieInfo,
   MovieImgContainer,
@@ -18,6 +17,7 @@ import {
 import Loading from '../../../components/Loading/Loading';
 const MovieSelected = () => {
   const { id } = useParams();
+  const history = useHistory();
   const { data, status, error } = useQuery(['movie', id], () =>
     getMovieById(id)
   );
@@ -31,15 +31,18 @@ const MovieSelected = () => {
     <>
       <Helmet>
         <title>{data.title}</title>
+        <meta name='description' content={data.overview} />
       </Helmet>
       <SingleMovieContainer>
-        <ButtonBackLink to='/'>
-          <ButtonBack>Back</ButtonBack>
-        </ButtonBackLink>
+        <ButtonBack onClick={history.goBack}>Back</ButtonBack>
         <MovieInfo>
           <MovieImgContainer>
             <MovieImg
-              src={`https://image.tmdb.org/t/p/w500/${data.poster_path}`}
+              src={
+                data.poster_path
+                  ? `https://image.tmdb.org/t/p/w500${data.poster_path}`
+                  : 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1200px-No-Image-Placeholder.svg.png'
+              }
               alt={data.title}
             />
             <Review>{data.vote_average}</Review>
@@ -48,19 +51,21 @@ const MovieSelected = () => {
             <MovieTitle>{data.title}</MovieTitle>
             <MovieFact>
               <MovieFactSpan>Tagline: </MovieFactSpan>
-              {data.tagline}
+              {data.tagline ? data.tagline : 'No tagline'}
             </MovieFact>
             <MovieFact>
               <MovieFactSpan>Released: </MovieFactSpan>
-              {new Date(data.release_date).toLocaleString('en-us', {
-                month: 'long',
-                day: 'numeric',
-                year: 'numeric',
-              })}
+              {data.release_date
+                ? new Date(data.release_date).toLocaleString('en-us', {
+                    month: 'long',
+                    day: 'numeric',
+                    year: 'numeric',
+                  })
+                : 'No released available'}
             </MovieFact>
             <MovieFact>
               <MovieFactSpan>Duration: </MovieFactSpan>
-              {data.runtime} minutes
+              {data.runtime ? data.runtime : 'No runtime available'} minutes
             </MovieFact>
             <MovieFact>
               <MovieFactSpan>Genre: </MovieFactSpan>

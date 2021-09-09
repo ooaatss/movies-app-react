@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Container, OutlineButton } from '../../GlobalStyles';
+import { Container, OutlineButton, Button } from '../../GlobalStyles';
 import { Link} from 'react-router-dom';
 export const MovieContainer = styled(Container)`
   padding: 32px 16px;
@@ -86,3 +86,15 @@ export const MovieLink = styled(Link)`
   outline: none;
   border: none;
 `;
+
+export const PaginationContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 32px;
+`;
+export const PaginationButton = styled(Button)`
+  margin-right: 8px;
+`;
+
+
