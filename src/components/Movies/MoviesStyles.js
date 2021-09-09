@@ -14,7 +14,6 @@ export const SearchContainer = styled.div`
 `;
 export const InputSearch = styled.input`
   width: 100%;
-  margin-right: 16px;
   height: 40px;
   border-radius: 20px;
   border: 1px solid #ccc;
