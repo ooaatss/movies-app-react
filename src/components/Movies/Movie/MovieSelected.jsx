@@ -78,11 +78,11 @@ const MovieSelected = () => {
               {data.overview ? data.overview : 'No overview available'}
             </MovieFact>
             <MovieFact>
-              <MovieFactSpan>Reneuve: </MovieFactSpan>
-              {data.revenue.toLocaleString('en-us', {
+              <MovieFactSpan>Revenue: </MovieFactSpan>
+              {data.revenue ? data.revenue.toLocaleString('en-us', {
                 style: 'currency',
                 currency: 'USD',
-              })}
+              }) : 'No Revenue'}
             </MovieFact>
           </MovieContent>
         </MovieInfo>
